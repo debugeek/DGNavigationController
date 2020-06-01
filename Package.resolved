@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "DGExtension",
+        "repositoryURL": "https://github.com/debugeek/DGExtension.git",
+        "state": {
+          "branch": null,
+          "revision": "b4c830c1d0a4e4711cee83b4106fbc79f6071eb9",
+          "version": "0.0.1"
+        }
+      }
+    ]
+  },
+  "version": 1
+}
