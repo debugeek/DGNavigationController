@@ -29,6 +29,7 @@ import UIKit
 }
 
 extension UIViewController: DGViewControllerProtocol {
+    
     open var dg_interactivePopGestureRecognizerEnabled: Bool {
         return true
     }

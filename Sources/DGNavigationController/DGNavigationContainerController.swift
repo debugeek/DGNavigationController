@@ -10,17 +10,18 @@ import UIKit
 
 class DGNavigationContainerController : UIViewController {
 
-    var contentViewController: UIViewController
-    var containerNavigationController: DGNavigationTransitionController
+    let contentViewController: UIViewController
+    let containerNavigationController: DGNavigationTransitionController
 
-    init(contentViewController: UIViewController!) {
+    init(contentViewController: UIViewController) {
         self.contentViewController = contentViewController
-        self.containerNavigationController = DGNavigationTransitionController(navigationBarClass: DGNavigationBar.self, toolbarClass: nil)
+
+        containerNavigationController = DGNavigationTransitionController(navigationBarClass: DGNavigationBar.self, toolbarClass: nil)
         containerNavigationController.embedViewController(contentViewController)
 
         super.init(nibName: nil, bundle: nil)
         
-        addChild(self.containerNavigationController)
+        addChild(containerNavigationController)
         containerNavigationController.didMove(toParent: self)
     }
     

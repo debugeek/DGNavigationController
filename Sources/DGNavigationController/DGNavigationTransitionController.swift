@@ -10,7 +10,9 @@ import UIKit
 
 class DGNavigationTransitionController : UINavigationController {
 
-    private class DGNavigationTransitionPlaceholderController : UIViewController { }
+    private class DGNavigationTransitionPlaceholderController : UIViewController {
+
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -64,13 +66,6 @@ class DGNavigationTransitionController : UINavigationController {
     override var viewControllers: [UIViewController] {
         get { navigationController?.viewControllers ?? [] }
         set { navigationController?.viewControllers = newValue }
-    }
-
-    override func forwardingTarget(for aSelector: Selector!) -> Any? {
-        if navigationController?.responds(to: aSelector) ?? false {
-            return navigationController
-        }
-        return nil
     }
     
     override var title: String? {

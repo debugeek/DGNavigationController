@@ -55,10 +55,6 @@ extension DGNavigationController: UINavigationControllerDelegate {
                 if contentViewController.dg_navigationBarHidden {
                     contentViewController.navigationController?.isNavigationBarHidden = true
                 }
-
-                if let containerController = navigationController.viewControllers.first as? DGNavigationContainerController, contentViewController != containerController.contentViewController {
-                    
-                }
             }
         }
 
@@ -72,7 +68,7 @@ extension DGNavigationController: UINavigationControllerDelegate {
             })
         }
 
-        if let delegate = context.realDelegate, delegate .responds(to: #selector(UINavigationControllerDelegate.navigationController(_:willShow:animated:))) {
+        if let delegate = context.realDelegate {
             delegate.navigationController?(navigationController, willShow: viewController, animated: true)
         }
     }
@@ -82,17 +78,51 @@ extension DGNavigationController: UINavigationControllerDelegate {
 
         UIViewController.attemptRotationToDeviceOrientation()
 
-        if let delegate = context.realDelegate, delegate .responds(to: #selector(UINavigationControllerDelegate.navigationController(_:didShow:animated:))) {
+        if let delegate = context.realDelegate {
             delegate.navigationController?(navigationController, didShow: viewController, animated: true)
         }
     }
 
-    open override func forwardingTarget(for aSelector: Selector!) -> Any? {
-        if let delegate = context.realDelegate, delegate.responds(to: aSelector) {
-            return delegate
+    public func navigationControllerSupportedInterfaceOrientations(_ navigationController: UINavigationController) -> UIInterfaceOrientationMask {
+        if let delegate = context.realDelegate, let mask = delegate.navigationControllerSupportedInterfaceOrientations?(navigationController) {
+            return mask
+        }
+
+        if let viewController = topViewController as? DGNavigationContainerController {
+            return viewController.contentViewController.supportedInterfaceOrientations
+        }
+
+        return .portrait
+    }
+
+    public func navigationControllerPreferredInterfaceOrientationForPresentation(_ navigationController: UINavigationController) -> UIInterfaceOrientation {
+        if let delegate = context.realDelegate, let mask = delegate.navigationControllerPreferredInterfaceOrientationForPresentation?(navigationController) {
+            return mask
+        }
+
+        if let viewController = topViewController as? DGNavigationContainerController {
+            return viewController.contentViewController.preferredInterfaceOrientationForPresentation
+        }
+
+        return .portrait
+    }
+
+
+    public func navigationController(_ navigationController: UINavigationController, interactionControllerFor animationController: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
+        if let delegate = context.realDelegate, let transitioning = delegate.navigationController?(navigationController, interactionControllerFor: animationController) {
+            return transitioning
         }
         return nil
     }
+
+
+    public func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationController.Operation, from fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        if let delegate = context.realDelegate, let transitioning = delegate.navigationController?(navigationController, animationControllerFor: operation, from: fromVC, to: toVC) {
+            return transitioning
+        }
+        return nil
+    }
+
 
 }
 
