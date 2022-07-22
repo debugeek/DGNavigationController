@@ -22,7 +22,7 @@ class DGNavigationControllerDelegateProxy: DGWeakProxy {
             aSelector == #selector(navigationController(_:didShow:animated:)) {
             return true
         }
-        return super.responds(to: aSelector)
+        return false
     }
 
 }

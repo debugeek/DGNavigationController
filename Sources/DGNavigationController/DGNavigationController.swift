@@ -13,6 +13,7 @@ open class DGNavigationController : UINavigationController {
     var inTransition: Bool = false
 
     var delegateProxy: DGNavigationControllerDelegateProxy?
+    var gestureRecognizerDelegateProxy: DGNavigationGestureRecognizerDelegateProxy?
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
@@ -41,38 +42,17 @@ open class DGNavigationController : UINavigationController {
         delegateProxy = DGNavigationControllerDelegateProxy(navigationController: self)
         super.delegate = delegateProxy;
 
-        interactivePopGestureRecognizer?.delaysTouchesBegan = true
-        interactivePopGestureRecognizer?.delegate = self
+        object_setClass(interactivePopGestureRecognizer, DGNavigationPanGestureRecognizer.self)
+        interactivePopGestureRecognizer?.delaysTouchesBegan = false
+        interactivePopGestureRecognizer?.delaysTouchesEnded = true
+        interactivePopGestureRecognizer?.cancelsTouchesInView = true
         interactivePopGestureRecognizer?.isEnabled = true
+        gestureRecognizerDelegateProxy = DGNavigationGestureRecognizerDelegateProxy(navigationController: self)
+        gestureRecognizerDelegateProxy?.target = interactivePopGestureRecognizer?.delegate as? NSObject
+        interactivePopGestureRecognizer?.delegate = gestureRecognizerDelegateProxy
     }
     
 }
-
-extension DGNavigationController: UIGestureRecognizerDelegate {
-
-    public func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
-        if inTransition {
-            return false
-        }
-
-        let viewControllers = viewControllers.map { $0.unwrapped() }
-        if viewControllers.count <= 1 {
-            return false
-        }
-
-        return viewControllers.last?.prefersInteractivePopGestureRecognizerEnabled ?? false
-    }
-
-    public func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
-        return true
-    }
-
-    public func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldBeRequiredToFailBy otherGestureRecognizer: UIGestureRecognizer) -> Bool {
-        return (gestureRecognizer == self.interactivePopGestureRecognizer)
-    }
-
-}
-
 
 extension DGNavigationController {
 

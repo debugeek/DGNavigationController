@@ -15,10 +15,16 @@ import DGFoundation
     case translucent
 }
 
+@objc public enum DGNavigationInteractivePopType: Int {
+    case `default`
+    case fullScreen
+    case disabled
+}
+
 extension UIViewController {
     
-    @objc open var prefersInteractivePopGestureRecognizerEnabled: Bool {
-        return true
+    @objc open var preferredNavigationInteractivePopType: DGNavigationInteractivePopType {
+        return .default
     }
     
     @objc open var prefersNavigationBarHidden: Bool {

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		9804AF49284A197C0025B06A /* DelegateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9804AF48284A197C0025B06A /* DelegateViewController.swift */; };
+		98893FB8288AA1F60096E6C9 /* InteractivePopGestureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98893FB7288AA1F60096E6C9 /* InteractivePopGestureViewController.swift */; };
 		D2933139283D2678007A55D2 /* DGNavigationController in Frameworks */ = {isa = PBXBuildFile; productRef = D2933138283D2678007A55D2 /* DGNavigationController */; };
 		D2A62B5828787A1200D30F74 /* CustomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A62B5728787A1200D30F74 /* CustomViewController.swift */; };
 		D2C0693526734D4400A24749 /* FeatureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C0693426734D4400A24749 /* FeatureViewController.swift */; };
@@ -21,6 +22,7 @@
 
 /* Begin PBXFileReference section */
 		9804AF48284A197C0025B06A /* DelegateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DelegateViewController.swift; sourceTree = "<group>"; };
+		98893FB7288AA1F60096E6C9 /* InteractivePopGestureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractivePopGestureViewController.swift; sourceTree = "<group>"; };
 		98D74365284CF9F80043905C /* DGNavigationController */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = DGNavigationController; path = ..; sourceTree = "<group>"; };
 		D2A62B5728787A1200D30F74 /* CustomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomViewController.swift; sourceTree = "<group>"; };
 		D2C0693426734D4400A24749 /* FeatureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureViewController.swift; sourceTree = "<group>"; };
@@ -77,6 +79,7 @@
 				D2C0693A2673661B00A24749 /* FeatureTableViewController.swift */,
 				9804AF48284A197C0025B06A /* DelegateViewController.swift */,
 				D2A62B5728787A1200D30F74 /* CustomViewController.swift */,
+				98893FB7288AA1F60096E6C9 /* InteractivePopGestureViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -192,6 +195,7 @@
 				D2C0693B2673661B00A24749 /* FeatureTableViewController.swift in Sources */,
 				D2E44CB3267309700015302F /* FeatureListViewController.swift in Sources */,
 				9804AF49284A197C0025B06A /* DelegateViewController.swift in Sources */,
+				98893FB8288AA1F60096E6C9 /* InteractivePopGestureViewController.swift in Sources */,
 				D2A62B5828787A1200D30F74 /* CustomViewController.swift in Sources */,
 				D2E44C9A2673056B0015302F /* AppDelegate.swift in Sources */,
 			);
