@@ -68,15 +68,15 @@ class TintColorFeatureViewController: FeatureViewController {
     }
     
     override var preferredNavigationBarTintColor: UIColor? {
-        return UIColor.color(withHex: 0x999999)
+        return UIColor(hex: 0x999999)
     }
     
     override var preferredNavigationBarBackgroundColor: UIColor? {
-        return UIColor.color(withHex: 0x222222)
+        return UIColor(hex: 0x222222)
     }
     
     override var preferredNavigationBarTitleTextColor: UIColor? {
-        return UIColor.color(withHex: 0x999999)
+        return UIColor(hex: 0x999999)
     }
     
 }
@@ -88,11 +88,11 @@ class BackItemFeatureViewController: FeatureViewController {
     }
     
     override var preferredNavigationBarBackIndicatorImage: UIImage? {
-        return UIImage.image(withColor: .systemBlue, size: CGSize(width: 8, height: 20))
+        return UIImage(color: .systemBlue, size: CGSize(width: 8, height: 20))
     }
 
     override var preferredNavigationBarBackIndicatorTransitionMaskImage: UIImage? {
-        return UIImage.image(withColor: .systemBlue, size: CGSize(width: 8, height: 20))
+        return UIImage(color: .systemBlue, size: CGSize(width: 8, height: 20))
     }
 
 }

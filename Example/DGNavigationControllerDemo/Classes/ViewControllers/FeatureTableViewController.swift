@@ -77,15 +77,15 @@ class OpaqueStyleTableViewController: FeatureTableViewController {
     }
 
     override var preferredNavigationBarTintColor: UIColor? {
-        return UIColor.color(withHex: 0x999999)
+        return UIColor(hex: 0x999999)
     }
     
     override var preferredNavigationBarBackgroundColor: UIColor? {
-        return UIColor.color(withHex: 0x222222)
+        return UIColor(hex: 0x222222)
     }
     
     override var preferredNavigationBarTitleTextColor: UIColor? {
-        return UIColor.color(withHex: 0x999999)
+        return UIColor(hex: 0x999999)
     }
     
 }
