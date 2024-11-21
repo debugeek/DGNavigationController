@@ -31,7 +31,7 @@ class DGNavigationBar: UINavigationBar {
                subview.bounds.size.height > 0,
                subview.bounds.size.height < 1 {
                 subview.isHidden = true
-                stop.pointee = true
+                stop = true
             }
         }
         
